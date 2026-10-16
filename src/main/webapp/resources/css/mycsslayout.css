@@ -1,0 +1,40 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 30px;
+    background: #f4f6f9;
+    color: #222;
+}
+
+.page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+}
+
+h1, h2 {
+    color: #24476b;
+}
+
+.topAligned {
+    vertical-align: top;
+}
+
+.form-grid {
+    width: 100%;
+}
+
+.text-area {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}

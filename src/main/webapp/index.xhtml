@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="primefaces">
+
+<h:head>
+    <title>TP0 - Jakarta EE</title>
+    <meta charset="UTF-8"/>
+    <h:outputStylesheet library="css" name="mycsslayout.css"/>
+    <h:outputScript library="js" name="script.js" target="body"/>
+</h:head>
+
+<h:body>
+    <main class="page">
+        <h1>TP0 - Jakarta EE</h1>
+        <h2>Question et réponse</h2>
+
+        <h:form id="form">
+
+            <p:messages id="messages" showDetail="true" closable="true"/>
+
+            <h:panelGrid columns="2"
+                         cellpadding="8"
+                         styleClass="form-grid">
+
+                <h:outputLabel for="roleSysteme"
+                               value="Rôle système :"/>
+
+                <p:selectOneMenu id="roleSysteme"
+                                 value="#{bb.roleSysteme}"
+                                 converter="roleConverter"
+                                 disabled="#{not bb.roleSystemeChangeable}"
+                                 style="min-width: 280px">
+                    <f:selectItems value="#{bb.rolesSysteme}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel for="question"
+                               value="Votre question :"/>
+
+                <p:inputTextarea id="question"
+                                 value="#{bb.question}"
+                                 required="true"
+                                 requiredMessage="Veuillez saisir une question avant d'envoyer."
+                                 rows="5"
+                                 cols="60"
+                                 autoResize="false"
+                                 styleClass="text-area"/>
+
+                <h:outputLabel for="reponse"
+                               value="Réponse :"
+                               styleClass="topAligned"/>
+
+                <p:inputTextarea id="reponse"
+                                 value="#{bb.reponse}"
+                                 rows="5"
+                                 cols="60"
+                                 readonly="true"
+                                 autoResize="false"
+                                 styleClass="text-area"/>
+
+                <h:outputLabel for="conversation"
+                               value="Historique :"
+                               styleClass="topAligned"/>
+
+                <p:inputTextarea id="conversation"
+                                 value="#{bb.conversation}"
+                                 rows="10"
+                                 cols="60"
+                                 readonly="true"
+                                 autoResize="false"
+                                 styleClass="text-area"/>
+            </h:panelGrid>
+
+            <div class="buttons">
+                <p:commandButton value="Envoyer"
+                                 action="#{bb.envoyer}"
+                                 update="messages roleSysteme question reponse conversation"
+                                 icon="pi pi-send"/>
+
+                <p:commandButton value="Nouveau chat"
+                                 action="#{bb.nouveauChat}"
+                                 ajax="false"
+                                 immediate="true"
+                                 icon="pi pi-plus"/>
+
+                <p:commandButton value="Copier la réponse"
+                                 type="button"
+                                 onclick="copyToClipboard('reponse')"
+                                 icon="pi pi-copy"/>
+
+                <p:commandButton value="Effacer"
+                                 action="#{bb.effacer}"
+                                 update="question reponse messages"
+                                 process="@this"
+                                 icon="pi pi-trash"/>
+            </div>
+
+        </h:form>
+    </main>
+</h:body>
+</html>
