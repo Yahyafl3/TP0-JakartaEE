@@ -70,6 +70,17 @@ class ModificateurTest {
     }
 
     @Test
+    @DisplayName("Question Git : GitHub vs GitLab doit comparer les plateformes")
+    void testQuestionGitHubVsGitLab() {
+        String reponse = modificateur.genererReponse("quelle est la différence entre github et gitlab?", "Mentor Git");
+
+        assertNotNull(reponse);
+        assertTrue(reponse.contains("GitHub vs GitLab"));
+        assertTrue(reponse.contains("Microsoft"));
+        assertTrue(reponse.contains("CI/CD"));
+    }
+
+    @Test
     @DisplayName("Question Jakarta EE : Cycle de vie JSF doit énumérer les 6 phases")
     void testQuestionCycleDeVieJSF() {
         String reponse = modificateur.genererReponse("Quelles sont les phases du cycle de vie JSF ?", "Coach Java");

@@ -179,6 +179,22 @@ public class Modificateur implements Serializable {
                     3. Finaliser l'opération : git commit ou git rebase --continue.""";
         }
 
+        if (q.contains("github") || q.contains("gitlab")) {
+            return """
+                    [Notion : GitHub vs GitLab]
+                    Git est le système de contrôle de version local. GitHub et GitLab sont deux plateformes distantes d'hébergement de dépôts Git avec des philosophies différentes :
+                    
+                    • GitHub (Microsoft) :
+                      - La plus grande communauté de développeurs au monde, référence de l'Open Source.
+                      - Outils collaboratifs réputés : Pull Requests, Discussions, GitHub Actions pour le CI/CD.
+                      - Idéal pour partager vos projets et contribuer à des projets communautaires.
+                    
+                    • GitLab :
+                      - Plateforme DevOps tout-en-un couvrant tout le cycle de vie applicatif (DevSecOps).
+                      - Moteur CI/CD natif et puissant (GitLab CI via .gitlab-ci.yml).
+                      - Très populaire en entreprise car il propose une version auto-hébergeable sur ses propres serveurs (Self-hosted / On-Premise).""";
+        }
+
         return """
                 [Notion : Bonnes pratiques Git]
                 • Faire des commits atomiques (une seule responsabilité par commit).
